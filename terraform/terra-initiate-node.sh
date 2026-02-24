@@ -14,11 +14,11 @@ if [[ ! $MYIP =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
 fi
 
 # Ask AMI ID
-read -p "Enter AMI ID (example: ami-1234567890abcdef0): " AMI_ID
-if [[ ! $AMI_ID =~ ^ami- ]]; then
-    echo "Invalid AMI format."
-    exit 1
-fi
+# read -p "Enter AMI ID (example: ami-1234567890abcdef0): " AMI_ID
+# if [[ ! $AMI_ID =~ ^ami- ]]; then
+#     echo "Invalid AMI format."
+#     exit 1
+# fi
 
 # Ask Key Name
 read -p "Enter Key Pair Name: " KEY_NAME
@@ -34,13 +34,22 @@ if ! [[ "$COMPUTE_COUNT" =~ ^[0-9]+$ ]]; then
     exit 1
 fi
 
+
+read -p "Enter AWS Region (example: ap-south-1): " AWS_REGION
+if [ -z "$AWS_REGION" ]; then
+    echo "AWS region cannot be empty."
+    exit 1
+fi
+
+
 # Export Terraform Variables
 export TF_VAR_my_ip="$MYIP/32"
 export TF_VAR_compute_count="$COMPUTE_COUNT"
 export TF_VAR_ami_id="$AMI_ID"
 export TF_VAR_key_name="$KEY_NAME"
+export TF_VAR_aws_region="$AWS_REGION"
 
-cd HPC-AWS/terraform
+
 echo "Running Terraform Init..."
 terraform init
 
