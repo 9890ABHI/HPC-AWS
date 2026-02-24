@@ -5,7 +5,6 @@ resource "aws_instance" "compute" {
   key_name      = var.key_name
 
   vpc_security_group_ids = [aws_security_group.hpc_sg.id]
-  subnet_id              = aws_subnet.public.id
 
   tags = {
     Name = "HPC-Compute-${count.index + 1}"

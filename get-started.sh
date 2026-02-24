@@ -23,4 +23,4 @@ echo "🚀 changing permissions setup file for excute it"
 echo "======================================"
 echo ""
 
-chmod +x setup-headnode.sh initiate-node.sh
+chmod +x setup-headnode.sh terraform/terra-initiate-node.sh

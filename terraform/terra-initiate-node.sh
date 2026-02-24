@@ -40,6 +40,7 @@ export TF_VAR_compute_count="$COMPUTE_COUNT"
 export TF_VAR_ami_id="$AMI_ID"
 export TF_VAR_key_name="$KEY_NAME"
 
+cd HPC-AWS/terraform
 echo "Running Terraform Init..."
 terraform init
 
