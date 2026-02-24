@@ -13,7 +13,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-TOTAL_STEPS=5
+TOTAL_STEPS=6
 CURRENT_STEP=0
 
 LOGFILE="bootstrap.log"
@@ -60,7 +60,7 @@ success "System updated"
 
 # Step 2
 step "Installing base dependencies..."
-sudo apt install -y curl unzip gnupg software-properties-common git > /dev/null
+sudo apt install -y curl unzip gnupg python3-pip python3-boto git > /dev/null
 success "Base dependencies installed"
 
 # Step 3
