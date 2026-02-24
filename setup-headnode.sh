@@ -2,7 +2,7 @@
 
 # ============================== Update and Install Dependencies ==============================
 # ==========================================
-# Enterprise HPC Head Node Bootstrap Script
+# Enterprise HPC Head Node Script
 # ==========================================
 
 set -e
@@ -55,7 +55,7 @@ is_installed() {
 # ---------- START ----------
 
 echo "======================================"
-echo "🚀 Starting HPC Head Node Bootstrap"
+echo "🚀 Starting HPC Head Node"
 echo "======================================"
 echo ""
 
@@ -63,18 +63,18 @@ echo ""
 step "Updating system packages..."
 sudo apt update -y > /dev/null
 sudo apt upgrade -y > /dev/null
-success "System updated"
+success "\n \n System updated"
 
 # 2️⃣ Install Base Dependencies
 step "Installing base dependencies..."
 sudo apt install -y curl unzip gnupg software-properties-common git > /dev/null
-success "Base dependencies installed"
+success "\n \n Base dependencies installed"
 
 # 3️⃣ Install AWS CLI v2 (Idempotent)
 step "Checking AWS CLI..."
 
 if is_installed aws; then
-    success "AWS CLI already installed. Skipping."
+    success "\n \n AWS CLI already installed. Skipping."
 else
     ARCH=$(uname -m)
 
@@ -92,7 +92,7 @@ else
     sudo ./aws/install > /dev/null
     rm -rf aws awscliv2.zip
 
-    success "AWS CLI v2 installed"
+    success "\n \n AWS CLI v2 installed"
 fi
 
 # 4️⃣ Install Terraform (Idempotent)
@@ -111,30 +111,30 @@ https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
     sudo apt update -y > /dev/null
     sudo apt install -y terraform > /dev/null
 
-    success "Terraform installed"
+    success "\n \n Terraform installed"
 fi
 
 # 5️⃣ Install Ansible (Idempotent)
 step "Checking Ansible..."
 
 if is_installed ansible; then
-    success "Ansible already installed. Skipping."
+    success "\n \n Ansible already installed. Skipping."
 else
     sudo apt install -y ansible > /dev/null
-    success "Ansible installed"
+    success "\n \n Ansible installed"
 fi
 
 # 6️⃣ Verification
-step "Verifying installations..."
+step "\n Verifying installations..."
 
 terraform -v
 ansible --version | head -n 1
 aws --version
 
-success "All tools verified successfully"
+success "\n \n All tools verified successfully"
 
 echo "======================================"
-echo -e "${GREEN}✅ Bootstrap Completed Successfully!${NC}"
+echo -e "${GREEN}✅ Completed Successfully!${NC}"
 echo "Log file saved as: $LOGFILE"
 echo "======================================"
 
