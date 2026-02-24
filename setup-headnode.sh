@@ -48,7 +48,7 @@ success() {
 # -------- START SCRIPT --------
 
 echo "======================================"
-echo "🚀 Starting HPC Head Node Bootstrap"
+echo "🚀 Starting HPC Head Node "
 echo "======================================"
 echo ""
 
@@ -60,8 +60,17 @@ success "System updated"
 
 # Step 2
 step "Installing base dependencies..."
-sudo apt install -y curl unzip gnupg software-properties-common awscli git > /dev/null
+sudo apt install -y curl unzip gnupg software-properties-common git > /dev/null
 success "Base dependencies installed"
+
+# Step 3
+step "Installing AWS CLI..."
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" > /dev/null
+unzip awscliv2.zip > /dev/null
+sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin > /dev/null
+rm -rf awscliv2.zip aws
+success "AWS CLI installed"
+
 
 # Step 3
 step "Installing Terraform..."
@@ -84,7 +93,7 @@ aws --version
 success "All tools verified"
 
 echo "======================================"
-echo -e "${GREEN}✅ Bootstrap Completed Successfully!${NC}"
+echo -e "${GREEN}✅ Completed Successfully!${NC}"
 echo "Project directory can now be created."
 echo "Log file saved as: $LOGFILE"
 echo "======================================"
