@@ -11,3 +11,9 @@ terraform fmt
 terraform validate
 terraform init
 terraform apply
+
+# to get you oun public IP details from
+
+```bash
+$ curl ifconfig.me
+```
