@@ -1,6 +1,6 @@
 
 
-resource "aws_subnet" "hpc-vpc" {
+resource "aws_subnet" "hpc_vpc" {
   vpc_id                  = aws_vpc.hpc_vpc.id
   cidr_block              = "10.0.1.0/24"
   enable_dns_hostnames = true
