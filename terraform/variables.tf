@@ -8,7 +8,7 @@ variable "my_ip" {
 }
 
 variable "key_name" {
-  default = "hpc-key"
+  default = "TEST-ONE"
 }
 
 
