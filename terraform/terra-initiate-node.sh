@@ -43,7 +43,7 @@ fi
 
 
 # Export Terraform Variables
-export TF_VAR_my_ip="$MYIP/32"
+export TF_VAR_my_ip="$MYIP"
 export TF_VAR_compute_count="$COMPUTE_COUNT"
 export TF_VAR_ami_id="$AMI_ID"
 export TF_VAR_key_name="$KEY_NAME"
