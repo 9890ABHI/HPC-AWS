@@ -41,6 +41,11 @@ if [ -z "$AWS_REGION" ]; then
     exit 1
 fi
 
+read -p "Enter AWS Avaibility zone Region (example: ap-south-1a): " AWS_AVAILABILITY_ZONE
+if [ -z "$AWS_AVAILABILITY_ZONE" ]; then
+    echo "AWS availability zone cannot be empty."
+    exit 1
+fi
 
 # Export Terraform Variables
 export TF_VAR_my_ip="$MYIP"
@@ -48,6 +53,7 @@ export TF_VAR_compute_count="$COMPUTE_COUNT"
 export TF_VAR_ami_id="$AMI_ID"
 export TF_VAR_key_name="$KEY_NAME"
 export TF_VAR_aws_region="$AWS_REGION"
+export TF_VAR_aws_availability_zone="$AWS_AVAILABILITY_ZONE"
 
 
 echo "Running Terraform Init..."

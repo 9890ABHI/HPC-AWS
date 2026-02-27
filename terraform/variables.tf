@@ -19,6 +19,10 @@ variable "aws_region" {
   type        = string
 }
 
+variable "aws_availability_zone" {
+  description = "AWS region availability zone to deploy resources"
+  type        = string
+}
 
 # ====================================
 
