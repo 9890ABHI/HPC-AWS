@@ -12,6 +12,7 @@ variable "compute_count" {
 variable "key_name" {
   description = "Key pair name"
   type        = string
+  default     = "HPC-KEY"
 }
 
 variable "aws_region" {
