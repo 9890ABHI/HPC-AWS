@@ -1,17 +1,23 @@
+variable "my_ip" {
+  description = "Public IP allowed for SSH"
+  type        = string
+}
 
 variable "compute_count" {
-  default = 2
+  description = "Number of compute nodes"
+  type        = number
 }
 
-variable "my_ip" {
-  description = "Your public IP"
-}
 
 variable "key_name" {
-  default = "TEST-ONE"
+  description = "Key pair name"
+  type        = string
 }
 
-
+variable "aws_region" {
+  description = "AWS region to deploy resources"
+  type        = string
+}
 
 
 # ====================================
