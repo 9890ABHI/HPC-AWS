@@ -26,6 +26,11 @@ variable "aws_availability_zone" {
   type        = string
 }
 
+variable "compute_count" {
+  description = "Number of compute nodes"
+  type        = number
+  default     = 0
+}
 # ====================================
 
 
